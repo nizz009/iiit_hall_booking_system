@@ -1,0 +1,142 @@
+{% extends "halls/base.html" %}
+{% load static %}
+
+{% block additional_styling %}
+
+	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+    <link rel="stylesheet" type="text/css" href="{% static 'halls/schedule/css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'halls/schedule/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'halls/schedule/css/templatemo-style.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<!-- style css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+	<!-- style css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'halls/halls-info/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'halls/halls-info/css/style2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'halls/halls-info/css/magnific-popup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'halls/halls-info/css/templatemo-dream-pulse.css' %}">
+
+    
+    <style>
+		#tmPortfolio {
+		  padding-top: 1000px;
+		}
+
+		.tm-portfolio-item {
+		  display: flex;
+		  align-items: center;
+		  margin-bottom: 80px;
+		}
+
+		.tm-portfolio-name {
+		  width: 330px;
+		  height: 220px;
+		  font-size: 2rem;
+		  padding: 70px 95px;
+		  display: flex;
+		  align-items: center;
+		  text-align: center;
+		}
+
+		.tm-portfolio-description {
+		  width: calc(100% - 330px);
+		  padding: 20px 45px;
+		}
+
+		.tm-portfolio-description h3 {
+		  margin-bottom: 20px;
+		}
+
+    </style>
+
+{% endblock %}
+
+{% block content %}
+<div class="header" id="head">	
+      <div class="container"> 
+         <div class="header-top">
+      		 <div class="logo">
+				<a href="{% url 'halls-home' %}"><img src="{% static 'halls/halls-home/images/logo.png' %}" alt=""/></a>
+			 </div>
+		   <div class="top-menu">
+		   	<span class="menu"> </span>
+			<ul>
+			 	<nav class="cl-effect-5">
+				<li><a href="{% url 'halls-home' %}" class="scroll"><strong><span data-hover="Home">Home</span></strong></a></li>
+				<li><a class="scroll" href="{% url 'hall-1' %}"><strong><span data-hover="Mini audi">Mini audi</span></strong></a></li>
+				<li><a href="{% url 'hall-2' %}" class="active"><strong><span data-hover="AG01"><span>AG01</span></strong></a></li>
+				<li><a href="{% url 'hall-3' %}" class="scroll"><strong><span data-hover="AG02"><span>AG02</span></strong></a></li>
+				{% if user.is_authenticated %}
+            		<li><a href="{% url 'all-applications' %}" class="scroll"><strong><span data-hover="All applications">All applications</span></strong></a></li>
+					<li><a href="{% url 'acc-logout' %}" class="scroll"><strong><span data-hover="Logout">Logout</span></strong></a></li>
+            	{% else %}
+                    <li><a href="{% url 'acc-student-login' %}" class="scroll"><strong><span data-hover="Login">Login</span></strong></a></li>
+					<li><a href="{% url 'acc-student-register' %}" class="scroll"><strong><span data-hover="Sign up">Sign up</span></strong></a></li>
+                {% endif %}
+				</nav>
+			 </ul>
+			 </div>
+			 <!--script-nav-->
+			 <script>
+			 $("span.menu").click(function(){
+			 $(".top-menu ul").slideToggle("slow" , function(){
+			 });
+			 });
+			 </script>
+			<div class="works-section" id="work" id="work">
+			   <div class="works-header">
+					<h3>DESCRIPTION</h3>
+						<p>CAPACITY: 300 people<br>DIMENSION: 40 x 25<br>PROJECTOR & AC : Available<br> GREEN BOARD: Available</p>
+				</div>
+				<div class="text-bg">
+		            {% if user.is_authenticated %}
+                    	<a href="{% url 'application-create' %}">Apply now</a>
+                    {% else %}
+                    	<a href="{% url 'acc-student-login' %}">Apply now</a>
+                    {% endif %}
+		        </div>
+			</div>
+			<section id="tmPortfolio">
+		      <div class="container-fluid">
+		        <div class="row">
+		          <div class="col-12">
+					{% for event in schedule %}
+						<div class="tm-portfolio-item">
+			              <div class="tm-portfolio-name text-white tm-bg-orange">
+			                Date: {{ event.date }}
+			              </div>
+			              <div class="tm-portfolio-description">
+			                <h3 class="tm-text-orange">
+			                  {{ event.name }}
+			                  <span class="tm-title-small">({{ event.start_time}} to {{ event.end_time}})</span>
+			                </h3>
+			                <p class="mb-0">
+				                  {{ event.purpose }}
+				                </p>
+				              </div>
+				            </div>
+						{% endfor %}
+						</div>
+					</div>
+				</div>
+			</section>
+
+	
+{% endblock %}
+
+{% block additional_scripts %}
+	<script src="{% static 'halls/halls-info/js/jquery.min.js' %}"></script>
+	<script src="{% static 'halls/halls-info/js/move-top.js' %}"></script>
+	<script src="{% static 'halls/halls-info/js/easing.js' %}"></script>
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ 	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+{% endblock %}
+	

@@ -1,0 +1,83 @@
+{% extends "halls/base.html" %}
+{% load static %}
+
+{% block additional_styling %}
+	<!-- style css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'halls/application/css/main.97292821.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="section-container" id="contact-section-container">
+    <div class="container contact-form-container">
+        <div class="row">
+            <div class="col-xs-12 col-md-offset-2 col-md-8">
+                <div class="section-container-spacer">
+                    <h2 class="text-center">Apply</h2>
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-control form-group">
+                            {{ form }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-container" id="contact-section-container">
+        <div class="container contact-form-container">
+            <div class="row">
+                <div class="col-xs-12 col-md-offset-2 col-md-8">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-container" id="contact-section-container">
+        <div class="container contact-form-container">
+            <div class="row">
+                <div class="col-xs-12 col-md-offset-2 col-md-8">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-container" id="contact-section-container">
+        <div class="container contact-form-container">
+            <div class="row">
+                <div class="col-xs-12 col-md-offset-2 col-md-8">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-container" id="contact-section-container">
+        <div class="container contact-form-container">
+            <div class="row">
+                <div class="col-xs-12 col-md-offset-2 col-md-8">
+                </div>
+            </div>
+        </div>
+    	<div class="section-container" id="contact-section-container">
+    	    <div class="container contact-form-container">
+    	        <div class="row">
+    	            <div class="col-xs-12 col-md-offset-2 col-md-8">
+    	                <button type="submit" class="btn btn-default">Submit</button>
+    	            </div>
+                </form>
+	        </div>
+	    </div>
+	</div>
+</div>
+{% endblock %}
+
+{% block additional_scripts %}
+	<script src="{% static 'halls/application/js/main.faaf51f9.js' %}"></script>
+	<!-- <script src="{% static 'halls/halls-home/js/popper.min.js' %}"></script>
+	<script src="{% static 'halls/halls-home/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'halls/halls-home/js/jquery-3.0.0.min.js' %}"></script>
+	<script src="{% static 'halls/halls-home/js/plugin.js' %}"></script> -->
+    <!-- sidebar -->
+	<!-- <script src="{% static 'halls/halls-home/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+	<script src="{% static 'halls/halls-home/js/custom.js' %}"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> -->
+{% endblock %}
